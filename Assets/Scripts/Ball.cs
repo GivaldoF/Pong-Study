@@ -1,12 +1,10 @@
-using System;
 using UnityEngine;
 using UnityEngine.Serialization;
-using Random = UnityEngine.Random;
 
 public class Ball : MonoBehaviour, ILocalPositionAdapter
 {
     [FormerlySerializedAs("Velocity")] 
-    public Vector3 initialVelocity; // Velocidade Inicial
+    public Vector3 initialVelocity; // Initial Velocidty
 
     private BallSimulation _ballSimulation; // Responsável pela física da bola (movimentação e colisão)
     private BallLogic _ballLogic; // Responsável pela lógica da bola
