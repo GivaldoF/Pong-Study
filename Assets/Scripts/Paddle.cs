@@ -1,10 +1,10 @@
 using UnityEngine;
+using UnityEngine.Serialization;
 
 public class Paddle : MonoBehaviour
 {
     [SerializeField] string inputAxis;
     [SerializeField] private float movimentSpeedScale = 5f;
-    [SerializeField] private float positionScale = 3f;
     private float _yLimit = 3.7f;
     void FixedUpdate()
     {
