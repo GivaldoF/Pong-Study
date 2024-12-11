@@ -25,6 +25,7 @@ public class BallSimulation
         else if (tag == "Paddle")
         {
             _currentVelocity = new Vector3(-_currentVelocity.x, _currentVelocity.y);
+            Score.OnScored?.Invoke();
         }
     }
 }

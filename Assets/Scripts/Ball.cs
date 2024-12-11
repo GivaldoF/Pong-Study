@@ -21,6 +21,7 @@ public class Ball : MonoBehaviour, ILocalPositionAdapter
         _ballLogic = new BallLogic(this, _ballSimulation);
         _ballLogic.OnDestroyed += () => Destroy(gameObject);
     }
+    
     void FixedUpdate()
     {
         _ballLogic.FixedUpdate(Time.fixedDeltaTime);

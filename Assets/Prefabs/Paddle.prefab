@@ -103,7 +103,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   inputAxis: 
   movimentSpeedScale: 5
-  positionScale: 10
 --- !u!212 &2177700656078377918
 SpriteRenderer:
   m_ObjectHideFlags: 0
