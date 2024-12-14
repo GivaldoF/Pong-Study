@@ -11,7 +11,8 @@ public class Score : MonoBehaviour
     private void Awake()
     {
         OnScored += AddScore;
-        _scoreText = GetComponent<TextMeshProUGUI>();
+        _scoreText = GetComponent<TextMeshProUGUI>() ?? 
+                     throw new NullReferenceException("TextMeshProUGUI component not found on Score object");
     }
 
     void AddScore()

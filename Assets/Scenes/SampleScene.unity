@@ -637,7 +637,7 @@ Camera:
   m_Enabled: 1
   serializedVersion: 2
   m_ClearFlags: 2
-  m_BackGroundColor: {r: 0.17194732, g: 0.31052962, b: 0.5283019, a: 1}
+  m_BackGroundColor: {r: 0, g: 0, b: 0, a: 1}
   m_projectionMatrixMode: 1
   m_GateFitMode: 2
   m_FOVAxisMode: 0
@@ -945,6 +945,18 @@ PrefabInstance:
       propertyPath: m_IsTrigger
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 2177700656078377918, guid: 3dc167ec3e4c24f409a6c849f94f006b, type: 3}
+      propertyPath: m_Color.b
+      value: 0.7264151
+      objectReference: {fileID: 0}
+    - target: {fileID: 2177700656078377918, guid: 3dc167ec3e4c24f409a6c849f94f006b, type: 3}
+      propertyPath: m_Color.g
+      value: 0.4423097
+      objectReference: {fileID: 0}
+    - target: {fileID: 2177700656078377918, guid: 3dc167ec3e4c24f409a6c849f94f006b, type: 3}
+      propertyPath: m_Color.r
+      value: 0.22272162
+      objectReference: {fileID: 0}
     - target: {fileID: 2708278289335157700, guid: 3dc167ec3e4c24f409a6c849f94f006b, type: 3}
       propertyPath: m_LocalPosition.x
       value: -10
@@ -987,11 +999,23 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3160231238979655988, guid: 3dc167ec3e4c24f409a6c849f94f006b, type: 3}
       propertyPath: m_Name
-      value: Paddle P2
+      value: Paddle P1
       objectReference: {fileID: 0}
     - target: {fileID: 4377094419517869749, guid: 3dc167ec3e4c24f409a6c849f94f006b, type: 3}
       propertyPath: inputAxis
       value: Player 2 Input
+      objectReference: {fileID: 0}
+    - target: {fileID: 4377094419517869749, guid: 3dc167ec3e4c24f409a6c849f94f006b, type: 3}
+      propertyPath: _inputAxis
+      value: Player 1 Input
+      objectReference: {fileID: 0}
+    - target: {fileID: 5027622107420565192, guid: 3dc167ec3e4c24f409a6c849f94f006b, type: 3}
+      propertyPath: _ball
+      value: 
+      objectReference: {fileID: 1965033024}
+    - target: {fileID: 5027622107420565192, guid: 3dc167ec3e4c24f409a6c849f94f006b, type: 3}
+      propertyPath: _isEnabled
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -1143,7 +1167,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6248e6387d1275a4988cb951d60e1ac9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  initialVelocity: {x: 5, y: 5, z: 0}
+  initialVelocity: {x: 7, y: 7, z: 0}
 --- !u!58 &1965033025
 CircleCollider2D:
   m_ObjectHideFlags: 0
@@ -1289,6 +1313,18 @@ PrefabInstance:
       propertyPath: m_IsTrigger
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 2177700656078377918, guid: 3dc167ec3e4c24f409a6c849f94f006b, type: 3}
+      propertyPath: m_Color.b
+      value: 0.07787468
+      objectReference: {fileID: 0}
+    - target: {fileID: 2177700656078377918, guid: 3dc167ec3e4c24f409a6c849f94f006b, type: 3}
+      propertyPath: m_Color.g
+      value: 0.083519936
+      objectReference: {fileID: 0}
+    - target: {fileID: 2177700656078377918, guid: 3dc167ec3e4c24f409a6c849f94f006b, type: 3}
+      propertyPath: m_Color.r
+      value: 0.6603774
+      objectReference: {fileID: 0}
     - target: {fileID: 2708278289335157700, guid: 3dc167ec3e4c24f409a6c849f94f006b, type: 3}
       propertyPath: m_LocalPosition.x
       value: 10
@@ -1331,12 +1367,20 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3160231238979655988, guid: 3dc167ec3e4c24f409a6c849f94f006b, type: 3}
       propertyPath: m_Name
-      value: Paddle P1
+      value: Paddle P2
       objectReference: {fileID: 0}
     - target: {fileID: 4377094419517869749, guid: 3dc167ec3e4c24f409a6c849f94f006b, type: 3}
       propertyPath: inputAxis
       value: Player 1 Input
       objectReference: {fileID: 0}
+    - target: {fileID: 4377094419517869749, guid: 3dc167ec3e4c24f409a6c849f94f006b, type: 3}
+      propertyPath: _inputAxis
+      value: Player 2 Input
+      objectReference: {fileID: 0}
+    - target: {fileID: 5027622107420565192, guid: 3dc167ec3e4c24f409a6c849f94f006b, type: 3}
+      propertyPath: _ball
+      value: 
+      objectReference: {fileID: 1965033024}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -1348,8 +1392,8 @@ SceneRoots:
   m_Roots:
   - {fileID: 519420032}
   - {fileID: 619394802}
-  - {fileID: 5031344936204842697}
   - {fileID: 1089158098}
+  - {fileID: 5031344936204842697}
   - {fileID: 153194284}
   - {fileID: 1965033027}
   - {fileID: 1801059465}

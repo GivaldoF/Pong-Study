@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 2260097888261011401}
   - component: {fileID: 370924060725432187}
   - component: {fileID: 4377094419517869749}
+  - component: {fileID: 5027622107420565192}
   - component: {fileID: 2177700656078377918}
   m_Layer: 0
   m_Name: Paddle
@@ -101,8 +102,23 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 50dbe247d2b777d47b080a4f93885d67, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  inputAxis: 
-  movimentSpeedScale: 5
+  _inputAxis: 
+  _moveSpeed: 5
+--- !u!114 &5027622107420565192
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3160231238979655988}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 48de7499f9fb721458939fdabc28a54d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _isEnabled: 0
+  _moveSpeed: 5
+  _ball: {fileID: 0}
 --- !u!212 &2177700656078377918
 SpriteRenderer:
   m_ObjectHideFlags: 0
