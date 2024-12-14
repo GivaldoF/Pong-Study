@@ -1,6 +1,7 @@
 using System;
 using TMPro;
 using UnityEngine;
+using UnityEngine.PlayerLoop;
 
 public class Score : MonoBehaviour
 {
@@ -18,6 +19,22 @@ public class Score : MonoBehaviour
     void AddScore()
     {
         _score++;
+        UpdateText();
+    }
+
+    void AddScore(int count)
+    {
+        _score += count;
+        UpdateText();
+    }
+    
+    void UpdateText()
+    {
         _scoreText.text = _score.ToString("D5");
+    }
+    
+    public int GetScore()
+    {
+        return _score;
     }
 }

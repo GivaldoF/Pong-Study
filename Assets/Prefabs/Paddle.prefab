@@ -119,6 +119,10 @@ MonoBehaviour:
   _isEnabled: 0
   _moveSpeed: 5
   _ball: {fileID: 0}
+  _reactionTime: 0.1
+  _randomFactor: 0.5
+  _visionRange: 5
+  _yLimit: 3.7
 --- !u!212 &2177700656078377918
 SpriteRenderer:
   m_ObjectHideFlags: 0

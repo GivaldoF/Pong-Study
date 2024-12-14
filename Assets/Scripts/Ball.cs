@@ -3,9 +3,9 @@ using UnityEngine.Serialization;
 
 public class Ball : MonoBehaviour, ILocalPositionAdapter
 {
-    [FormerlySerializedAs("Velocity")] 
-    public Vector3 initialVelocity; // Initial Velocidty
-
+   
+    [SerializeField] private Vector3 _initialDirection; // Initial Velocidty
+    [SerializeField] private float _speed = 5;
     private BallSimulation _ballSimulation; // Responsável pela física da bola (movimentação e colisão)
     private BallLogic _ballLogic; // Responsável pela lógica da bola
 
@@ -17,7 +17,11 @@ public class Ball : MonoBehaviour, ILocalPositionAdapter
     
     void Awake()
     {
-        _ballSimulation = new BallSimulation(initialVelocity);
+        Vector3 velocity =  (_initialDirection == Vector3.zero) ?  
+                            new Vector3(Random.Range(-1f, 1f), Random.Range(-1f, 1f), 0).normalized * _speed : 
+                            (_speed * _initialDirection);
+
+        _ballSimulation = new BallSimulation(velocity);
         _ballLogic = new BallLogic(this, _ballSimulation);
         _ballLogic.OnDestroyed += () => Destroy(gameObject);
     }
@@ -30,5 +34,10 @@ public class Ball : MonoBehaviour, ILocalPositionAdapter
     private void OnTriggerEnter2D(Collider2D other)
     {
         _ballLogic.Hit(other.gameObject.tag);
+    }
+    
+    public void ChangeSpeed(float speed)
+    {
+        _ballSimulation.UpdateSpeed(_speed);
     }
 }

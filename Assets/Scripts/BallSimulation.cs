@@ -15,6 +15,11 @@ public class BallSimulation
     {
         return position + _currentVelocity * deltaTime;
     }
+
+    public void UpdateSpeed(float speed)
+    {
+        _currentVelocity = _currentVelocity.normalized * speed;
+    }
     
     public void HandleCollision(string tag)
     {
