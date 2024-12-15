@@ -16,6 +16,11 @@ public class BallSimulation
         return position + _currentVelocity * deltaTime;
     }
 
+    public float GetSpeed()
+    {
+        return _currentVelocity.magnitude;
+    }
+    
     public void UpdateSpeed(float speed)
     {
         _currentVelocity = _currentVelocity.normalized * speed;

@@ -10,6 +10,8 @@ public class GameStateManager
         Paused,
         GameOver
     }
+    
+    public static GameStateManager Instance { get; private set; }
 
     public event Action<GameState> OnStateChanged;
     
@@ -21,13 +23,14 @@ public class GameStateManager
         _currentState = initialState;
     }
     
+    public static void Initialize(GameState initialState)
+    {
+        Instance ??= new GameStateManager(initialState);
+    }
+    
     public void ChangeState(GameState newState)
     {
         _currentState = newState;
-        Debug.Log($"Game state changed to {_currentState}");
-
         OnStateChanged?.Invoke(_currentState);
     }
-    
-    
 }

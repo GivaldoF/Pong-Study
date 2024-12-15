@@ -1,3 +1,4 @@
+using System;
 using UnityEngine;
 
 public class GameManager : MonoBehaviour
@@ -17,52 +18,81 @@ public class GameManager : MonoBehaviour
     // phase 4 - 300 + random (-50, 50)
     // phase 4 - 500 + random (-50, 50)
     
-    [SerializeField] private GameStateManager _gameStateManager;
     [SerializeField] private Ball _ball;
-
+    [SerializeField] private GameObject _mainMenuScreen;
+    [SerializeField] private GameObject _gameOverScreen;
+    
     void Start()
     {
-        _gameStateManager = new GameStateManager(GameStateManager.GameState.MainMenu);
+        GameStateManager.Initialize(GameStateManager.GameState.MainMenu);
+        GameStateManager.Instance.OnStateChanged += HandleStateChanged;
     }
 
     void Update()
     {
-        if (Input.GetKeyDown(KeyCode.Space))
+        
+        if (Input.GetKeyDown(KeyCode.Space) && GameStateManager.Instance.CurrentState == GameStateManager.GameState.MainMenu)
         {
-            switch (_gameStateManager.CurrentState)
+            GameStateManager.Instance.ChangeState(GameStateManager.GameState.Playing);
+        }
+        else if (Input.anyKeyDown && GameStateManager.Instance.CurrentState == GameStateManager.GameState.GameOver)
+        {
+            GameStateManager.Instance.ChangeState(GameStateManager.GameState.MainMenu);
+        }
+        else if (Input.GetKeyDown(KeyCode.Escape))
+        {
+            if(GameStateManager.Instance.CurrentState == GameStateManager.GameState.Playing)
             {
-                case GameStateManager.GameState.MainMenu:
-                    if(_gameStateManager.CurrentState != GameStateManager.GameState.Playing)
-                        _gameStateManager.ChangeState(GameStateManager.GameState.Playing);
-                    break;
-                case GameStateManager.GameState.Playing:
-                    if(_gameStateManager.CurrentState != GameStateManager.GameState.Paused)
-                        _gameStateManager.ChangeState(GameStateManager.GameState.Paused);
-                    break;
-                case GameStateManager.GameState.GameOver:
-                    if(_gameStateManager.CurrentState != GameStateManager.GameState.MainMenu)
-                        _gameStateManager.ChangeState(GameStateManager.GameState.MainMenu);
-                    break;
+                    GameStateManager.Instance.ChangeState(GameStateManager.GameState.Paused);
+            }
+            else if(GameStateManager.Instance.CurrentState == GameStateManager.GameState.Paused)
+            {
+                GameStateManager.Instance.ChangeState(GameStateManager.GameState.Playing);
             }
         }
+    }
 
-        if (Input.GetKeyDown(KeyCode.Escape))
+    void HandleStateChanged(GameStateManager.GameState newState)
+    {
+        switch (newState)
         {
-            switch (_gameStateManager.CurrentState)
-            {
-                case GameStateManager.GameState.Playing:
-                    if(_gameStateManager.CurrentState != GameStateManager.GameState.Paused)
-                        _gameStateManager.ChangeState(GameStateManager.GameState.Paused);
-                    break;
-                case GameStateManager.GameState.Paused:
-                    if(_gameStateManager.CurrentState != GameStateManager.GameState.Playing)
-                        _gameStateManager.ChangeState(GameStateManager.GameState.Playing);
-                    break;
-                case GameStateManager.GameState.GameOver:
-                    if(_gameStateManager.CurrentState != GameStateManager.GameState.MainMenu)
-                        _gameStateManager.ChangeState(GameStateManager.GameState.MainMenu);
-                    break;
-            }
+            case GameStateManager.GameState.MainMenu:
+                ShowMenuScreen();
+                HideGameOverScreen();
+                break;
+            case GameStateManager.GameState.Playing:
+                Time.timeScale = 1;
+                HideMenuScreen();
+                HideGameOverScreen();
+                break;
+            case GameStateManager.GameState.Paused:
+                Time.timeScale = 0;
+                ShowMenuScreen();
+                HideGameOverScreen();
+                break;
+            case GameStateManager.GameState.GameOver:
+                ShowGameOverScreen();
+                break;
         }
+    }
+    
+    void ShowGameOverScreen()
+    {
+        _gameOverScreen.SetActive(true);
+    }
+
+    void HideGameOverScreen()
+    {
+        _gameOverScreen.SetActive(false);
+    }
+
+    void ShowMenuScreen()
+    {
+        _mainMenuScreen.SetActive(true);
+    }
+    
+    void HideMenuScreen()
+    {
+        _mainMenuScreen.SetActive(false);
     }
 }
